@@ -204,8 +204,8 @@ class SaveCoverAudioVideo:
         return {"ui":{"gifs": [preview]},"result": ((cover_audio_video, cover_audio_file_name),)}
 
     @classmethod
-    def IS_CHANGED(s, filenames):
-        return filenames
+    def IS_CHANGED(filenames):
+        return filenames[1][-1] 
 
 #NODE_CLASS_MAPPINGS = {
 #    "SaveCoverAudioVideo":SaveCoverAudioVideo,
