@@ -24,6 +24,7 @@ const convDict = {
     VHS_LoadImages : ["directory", null, "image_load_cap", "skip_first_images", "select_every_nth"],
     VHS_LoadImagesPath : ["directory", "image_load_cap", "skip_first_images", "select_every_nth"],
     VHS_VideoCombine : ["frame_rate", "loop_count", "filename_prefix", "format", "pingpong", "save_image"],
+    VHS_SaveCoverAudio : ["filename_prefix", "audio_path", "cover_img_path"],
     VHS_LoadVideo : ["video", "force_rate", "force_size", "frame_load_cap", "skip_first_frames", "select_every_nth"],
     VHS_LoadVideoPath : ["video", "force_rate", "force_size", "frame_load_cap", "skip_first_frames", "select_every_nth"],
 };
@@ -1837,6 +1838,17 @@ app.registerExtension({
             addPreviewOptions(nodeType);
             addFormatWidgets(nodeType, nodeData);
             addVAEInputToggle(nodeType, nodeData)
+        } else if (nodeData?.name == "VHS_SaveCoverAudio") {
+            addDateFormatting(nodeType, "filename_prefix");
+            chainCallback(nodeType.prototype, "onExecuted", function(message) {
+                if (message?.gifs) {
+                    this.updateParameters(message.gifs[0], true);
+                }
+            });
+            addVideoPreview(nodeType, false);
+            addPreviewOptions(nodeType);
+            //addFormatWidgets(nodeType, nodeData);
+            //addVAEInputToggle(nodeType, nodeData)
         } else if (nodeData?.name == "VHS_SaveImageSequence") {
             //Disabled for safety as VHS_SaveImageSequence is not currently merged
             //addDateFormating(nodeType, "directory_name", timestamp_widget=true);

@@ -24,6 +24,7 @@ from .utils import ffmpeg_path, get_audio, hash_path, validate_path, requeue_wor
         gifski_path, calculate_file_hash, strip_path, try_download_video, is_url, \
         imageOrLatent, BIGMAX, merge_filter_args, ENCODE_ARGS, floatOrInt, cached
 from comfy.utils import ProgressBar
+from .image_cover_audio_save import SaveCoverAudioVideo
 
 if 'VHS_video_formats' not in folder_paths.folder_names_and_paths:
     folder_paths.folder_names_and_paths["VHS_video_formats"] = ((),{".json"})
@@ -1019,6 +1020,7 @@ NODE_CLASS_MAPPINGS = {
     "VHS_SelectMasks": SelectMasks,
     "VHS_Unbatch": Unbatch,
     "VHS_SelectLatest": SelectLatest,
+    "VHS_SaveCoverAudio":SaveCoverAudioVideo,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "VHS_VideoCombine": "Video Combine 🎥🅥🅗🅢",
@@ -1063,4 +1065,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "VHS_SelectMasks": "Select Masks 🎥🅥🅗🅢",
     "VHS_Unbatch":  "Unbatch 🎥🅥🅗🅢",
     "VHS_SelectLatest": "Select Latest 🎥🅥🅗🅢",
+    "VHS_SaveCoverAudio":"SaveCoverAudioVideo",
+    
 }
