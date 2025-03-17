@@ -18,6 +18,8 @@ class SaveCoverAudioVideo:
                     {
                         "filenames": ("VHS_FILENAMES",),
                         "filename_prefix": ("STRING", {"default": "ComfyUI"}),
+                        "cover_frame_num":("INT",{"default":1}),
+                        "audio_start_s":("INT",{"default":0}),
                         "audio_path": ("STRING", {"default":""}),
                         "cover_img_path": ("STRING", {"default":""}),
                      },
