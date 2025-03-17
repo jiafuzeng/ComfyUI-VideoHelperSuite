@@ -34,9 +34,9 @@ class SaveCoverAudioVideo:
     def replace_first_frame_with_image(self,input_video, input_image,filename_prefix):
         try:
             # Generate a unique output path
-            dir, _ = os.path.split(input_video)
+            dir, file_name = os.path.split(input_video)
             timestamp = time.time()
-            filename = f"{filename_prefix}_mix_cover_{timestamp}.mp4" 
+            filename = f"{filename_prefix}_cover_{timestamp}_{file_name}" 
             output_path = os.path.join(dir,filename)
 
             # Read video and image
@@ -88,8 +88,8 @@ class SaveCoverAudioVideo:
     def mix_audio_with_video(self,video_path,audio_path,filename_prefix,audio_volume=0.5,original_audio_volume=0.5):
         try:
             timestamp = time.time()
-            dir_path = os.path.dirname(video_path)
-            filename = f"{filename_prefix}_mix_audio_{timestamp}.mp4"
+            dir_path,file_name = os.path.split(video_path)
+            filename = f"{filename_prefix}_audio_{timestamp}_{file_name}"
             output_path = os.path.join(dir_path, filename)
 
             # 获取视频时长
