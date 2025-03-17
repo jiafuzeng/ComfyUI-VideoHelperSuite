@@ -51,6 +51,7 @@ class SaveCoverAudioVideo:
             fps = float(video_info['r_frame_rate'].split('/')[0]) / float(video_info['r_frame_rate'].split('/')[1])
 
             # Set image duration to 1 frame
+            cover_frame_num = min(cover_frame_num,fps)
             image_duration = cover_frame_num / fps
 
             # Scale image to match video resolution
